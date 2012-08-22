@@ -109,12 +109,12 @@ function create_wadt_post_form()
 	echo $content;
 	echo "<br />";
 	echo "<h2 id='wadt-form'>Do you or your organisation already do this?</h2><p>Let everyone know what is already happening in the city. (Any information you add will be shown on this page and on our <a href='http://fairbrum.podnosh.com/were-already-doing-it/'>map</a>.)</p>";
-	echo "<form method='POST'><input type='text' name='title' placeholder='Title'>";
-	echo "<input type='text' name='description' placeholder='Description'><br />";
-	echo "<input type='text' name='postcode' placeholder='Postcode'>";
-	echo "<input type='text' name='org_name' placeholder='Organisation Name'><br />";
-	echo "<input type='text' name='telephone' placeholder='Phone Number'>";
-	echo "<input type='text' name='website' placeholder='Website'><br />";
+	echo "<form method='POST'><input type='text' name='title' placeholder='Name'>";
+	echo "<input type='text' name='org_name' placeholder='Your Organisation'><br />";
+	echo "<input type='text' name='website' placeholder='Website'>";
+	echo "<input type='text' name='postcode' placeholder='Postcode'><br />";
+	echo "<input type='text' name='telephone' placeholder='Phone Number'><br />";
+	echo "<textarea rows='10' cols='10' name='description' placeholder='Describe how you or your organisation are already doing this recommendation.'></textarea>";
 	echo "<input type='hidden' name='post_id' value='".$post->ID."'>";
 	echo "<input type='submit' value='Save'>";
 	echo "</form>";
@@ -365,9 +365,10 @@ function reccomendations_page()
 function how_many()
 {
 global $wpdb;
+global $post;
 $number_already_doing_this = "SELECT COUNT(*) FROM ".$wpdb->prefix. "wadt WHERE `post_id` = ".$post->ID;
 $adt = $wpdb->get_results($number_already_doing_this, ARRAY_N);
-echo var_dump($adt);
+echo $adt[0][0] . " ";
 }
 
 add_shortcode('wadt_recent_tweets', 'wadt_recent_tweets');
