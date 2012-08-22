@@ -231,6 +231,7 @@ function show_wadt()
 function wadt_link($content)
 {
 	$content = $content. "<br /><i><a href='".get_permalink()."'>Already doing this? or Leave a Comment</a></i>";
+	$content .= "<br /><img src='commentbubble.png'>";
 	return $content;
 }
 
