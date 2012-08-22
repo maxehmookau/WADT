@@ -1,0 +1,17 @@
+We're Already Doing this!
+=========================
+
+A wordpress plugin comprised of a few bits and pieces that allow public sector organisations to present green papers from consultation processes using wordpress.
+
+WADT allows you to:
+
+* Let organisations say "we're already doing this" to a recommendation. 
+* Plot these organisations on a Google Map
+* Put this information anywhere in a wordpress theme using shortcodes.
+
+> This plugin is currently aimed specifically at the fairbrum process (fairbrum.podnosh.com) and so has some elements hard coded to this effect. 
+
+TODO
+------
+
+* Make sure everything is configurable. Add lots of variables to the admin page.
