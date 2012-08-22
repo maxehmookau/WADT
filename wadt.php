@@ -108,7 +108,7 @@ function create_wadt_post_form()
 	global $post;
 	echo $content;
 	echo "<br />";
-	echo "<h2>Do you or your organisation already do this?</h2><p>Let everyone know what is already happening in the city. (Any information you add will be shown on this page and on our <a href='http://fairbrum.podnosh.com/were-already-doing-it/'>map</a>.)</p>";
+	echo "<h2 id='wadt-form'>Do you or your organisation already do this?</h2><p>Let everyone know what is already happening in the city. (Any information you add will be shown on this page and on our <a href='http://fairbrum.podnosh.com/were-already-doing-it/'>map</a>.)</p>";
 	echo "<form method='POST'><input type='text' name='title' placeholder='Title'>";
 	echo "<input type='text' name='description' placeholder='Description'><br />";
 	echo "<input type='text' name='postcode' placeholder='Postcode'>";
@@ -232,8 +232,8 @@ function wadt_link($content)
 {
   define( 'WADT_PATH', plugin_dir_url(__FILE__) );
 	
-	$content = $content .= "<br /><img src='".WADT_PATH."commentbubble.png' style='float:left;'>";
-	$content .= "<img src='".WADT_PATH."organisationbubble.png' style='float:right;'>";
+	$content = $content .= "<br /><a href='#respond'><img src='".WADT_PATH."commentbubble.png' style='float:left;'></a>";
+	$content .= "<a href='#wadt-form'><img src='".WADT_PATH."organisationbubble.png' style='float:right;'></a>";
 	return $content;
 }
 
@@ -360,6 +360,14 @@ function reccomendations_page()
     echo "</div>";
 		echo "<div class='sep'></div>";
 	}
+}
+
+function how_many()
+{
+global $wpdb;
+$number_already_doing_this = "SELECT COUNT(*) FROM ".$wpdb->prefix. "wadt WHERE `post_id` = ".$post->ID;
+$adt = $wpdb->get_results($number_already_doing_this, ARRAY_N);
+echo var_dump($adt);
 }
 
 add_shortcode('wadt_recent_tweets', 'wadt_recent_tweets');
