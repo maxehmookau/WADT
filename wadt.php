@@ -230,8 +230,10 @@ function show_wadt()
 
 function wadt_link($content)
 {
-	$content = $content. "<br /><i><a href='".get_permalink()."'>Already doing this? or Leave a Comment</a></i>";
-	$content .= "<br /><img src='commentbubble.png'>";
+  define( 'WADT_PATH', plugin_dir_url(__FILE__) );
+	
+	$content = $content .= "<br /><img src='".WADT_PATH."commentbubble.png' style='float:left;'>";
+	$content .= "<img src='".WADT_PATH."organisationbubble.png' style='float:right;'>";
 	return $content;
 }
 
